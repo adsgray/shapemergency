@@ -6,6 +6,8 @@ import com.adsg0186.shapemergency.testgame1.config.GamePreferences;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,6 +27,7 @@ public class SettingsView extends Activity {
         setContentView(R.layout.activity_settings);
         initFont();
         setFontOnText();
+        makeLinksClickable();
         populateCheckBoxesFromPreferences();
         setupCheckboxListeners();
     }
@@ -85,12 +88,20 @@ public class SettingsView extends Activity {
         TextView[] textIds = new TextView[] {
                 (CheckBox) findViewById(R.id.soundcheckbox),
                 (CheckBox) findViewById(R.id.vibratecheckbox),
-                (TextView) findViewById(R.id.settings_title)
+                (TextView) findViewById(R.id.settings_title),
+                (TextView) findViewById(R.id.about_title),
+                (TextView) findViewById(R.id.about_text)
         };
 
         for (int ct = 0; ct < textIds.length; ct++) {
             textIds[ct].setTypeface(unispace);
         }
+    }
+    
+    protected void makeLinksClickable() {
+        TextView about = (TextView) findViewById(R.id.about_text);
+        about.setText(Html.fromHtml(getString(R.string.about_text)));
+        about.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
 }

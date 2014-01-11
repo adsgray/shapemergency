@@ -33,4 +33,26 @@
         android:layout_marginTop="40dp"
         android:text="@string/settings_vibration" />
 
+    <TextView
+        android:id="@+id/about_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vibratecheckbox"
+        android:layout_marginTop="45dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/about_title" />
+
+    <TextView
+        android:id="@+id/about_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/about_title"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+    	android:paddingBottom="15dp"
+    	android:paddingLeft="25dp"
+    	android:paddingRight="25dp"
+    	android:paddingTop="15dp" 
+        android:text="@string/about_text" />
+
 </RelativeLayout>

@@ -17,5 +17,7 @@
     <string name="settings_sound">Enable Sound</string>
     <string name="resume_button">Resume</string>
     <string name="clear_high_scores">Clear High Scores</string>
-
+    <string name="about_button">About</string>
+    <string name="about_title">About</string>
+    <string name="about_text"><![CDATA[Shape-mergency. By Andrew Gray. For James and David. <a href="https://github.com/adsgray/shapemergency">Source code.</a>]]></string>
 </resources>
