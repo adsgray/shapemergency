@@ -41,6 +41,7 @@ public class FiringBlobDecorator extends BlobDecorator implements
     protected int hitPoints;
     protected int maxMissiles; // max missiles in the air at one time
     protected int numShields;
+    protected int shieldTrackId;
     protected BlobTrigger shieldCollisionTrigger;
     GameCommand incShield;
 
@@ -61,6 +62,11 @@ public class FiringBlobDecorator extends BlobDecorator implements
                          // you can launch up to 2 simultaneous missiles
         this.incShield = incShield;
         numShields = 0; // the controlling Game tells us how many shields we start with after creating us
+    }
+
+    @Override public void setWorld(WorldIF w) {
+        super.setWorld(w);
+        shieldTrackId = world.createTrackableBlobList();
     }
 
     public int incrementNumShields(int ct) {
@@ -127,6 +133,12 @@ public class FiringBlobDecorator extends BlobDecorator implements
 
     protected Boolean canDoShieldsUp() {
         // if config says yes, that overrides the later calculation
+        boolean shieldUpAlready = world.trackableBlobListCount(shieldTrackId) > 0;
+
+        if (shieldUpAlready) {
+            return false;
+        }
+
         return GameConfig.get().shieldsUpOverride() ||
                 (numShields > 0 && ticks - ticksWhenShieldsWentUp >= GameConfig.get().shieldTickInterval());
     }
@@ -150,6 +162,7 @@ public class FiringBlobDecorator extends BlobDecorator implements
         b = BlobFactory.flashColorCycler(b, 1);
         b = BlobFactory.throbber(b);
         b.setWorld(world);
+        world.addBlobToTrackableBlobList(shieldTrackId, b);
         
         // behave like a missile
         b.registerCollisionTrigger(shieldCollisionTrigger);
