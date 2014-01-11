@@ -8,6 +8,8 @@ import com.github.adsgray.gdxtry1.engine.util.LocalHighScore;
 import com.github.adsgray.gdxtry1.engine.util.LocalHighScore.ScoreRecord;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -87,8 +89,8 @@ public class HighScoreView extends Activity {
     }
 
     private OnClickListener clearHighScoresButtonListener = new OnClickListener() {
-        @Override public void onClick(View arg0) {
- 
+        
+        protected void doClear() {
             String[] keys = new String[] {
                     "high_score_0",
                     "high_score_1",
@@ -101,6 +103,40 @@ public class HighScoreView extends Activity {
             
             Toast.makeText(getApplicationContext(), "High scores cleared.", Toast.LENGTH_SHORT).show();
             HighScoreView.this.finish();
+        }
+        
+        protected void setFontForDialog(AlertDialog d) {
+            Button b = d.getButton(AlertDialog.BUTTON_POSITIVE);
+            if (b != null) b.setTypeface(unispace);
+            b = d.getButton(AlertDialog.BUTTON_NEGATIVE);
+            if (b != null) b.setTypeface(unispace);
+            // nice hack to get the message in the dialog
+            TextView t = (TextView) d.findViewById(android.R.id.message);
+            if (t != null) t.setTypeface(unispace);
+        }
+
+        @Override public void onClick(View arg0) {
+            //AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(HighScoreView.this);
+            builder.setMessage(R.string.clear_hs_confirm); //.setTitle(R.string.clear_hs_confirm_title);
+            
+            builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    doClear();
+                }
+            });
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                }
+            });
+            
+            // originally had builder.create(); setFontForDialog(dialog); dialog.show()
+            // but you get an exception: 
+            // E/AndroidRuntime(2726): android.util.AndroidRuntimeException: requestFeature() must be called before adding content
+            // W-T-F
+            AlertDialog dialog = builder.show();
+            setFontForDialog(dialog);
         }
     };
 

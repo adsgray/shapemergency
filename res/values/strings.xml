@@ -20,4 +20,8 @@
     <string name="about_button">About</string>
     <string name="about_title">About</string>
     <string name="about_text"><![CDATA[Shape-mergency. By Andrew Gray. For James and David. <a href="https://github.com/adsgray/shapemergency">Source code.</a>]]></string>
+    <string name="clear_hs_confirm">Are you sure you want to clear high scores?</string>
+    <string name="clear_hs_confirm_title">Clear High Scores</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>
