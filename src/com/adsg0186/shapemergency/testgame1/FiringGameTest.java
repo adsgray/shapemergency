@@ -55,8 +55,8 @@ public class FiringGameTest implements Game, KeyListener {
     WorldIF world;
     Renderer renderer;
     protected Boolean stopped = false;
-    protected int numEnemies = 6; 
     protected int enemyTrackingId;
+    protected int bonusDropperTrackingId;
     FiringBlobDecorator defender;
     protected int score;
     ScoreTextDisplay scoreDisplay;
@@ -98,10 +98,6 @@ public class FiringGameTest implements Game, KeyListener {
         
     }
 
-    protected void doSettingsKnobs() {
-        numEnemies = GameConfig.get().numEnemies();
-        scoreForNextBoss = GameConfig.get().bossScoreIncrement();
-    }
 
     public class DifficultySetter implements GameCommand {
         @Override
@@ -123,8 +119,6 @@ public class FiringGameTest implements Game, KeyListener {
                 GameConfig.set(GameConfigIF.Difficulty.insane);
                 break;
             }
-
-            doSettingsKnobs();
         }
     }
 
@@ -191,6 +185,7 @@ public class FiringGameTest implements Game, KeyListener {
         world = w;
         renderer = r;
         enemyTrackingId = world.createTrackableBlobList();
+        bonusDropperTrackingId = world.createTrackableBlobList();
         this.context = context;
         this.gameFinished = gameFinished;
         incShield = new IncShield();
@@ -216,11 +211,13 @@ public class FiringGameTest implements Game, KeyListener {
     // if we're within 500 points of the next boss then there is a chance
     // to get a bonus dropper
     protected Boolean createBonusDropper() {
-        return (scoreForNextBoss - score <= GameConfig.get().bonusDropperBossPointDiff() && TargetUtils.rnd.nextInt() < bonusDropperChance);
+        return (scoreForNextBoss - score <= GameConfig.get().bonusDropperBossPointDiff() && 
+                TargetUtils.rnd.nextInt() < bonusDropperChance &&
+                world.trackableBlobListCount(bonusDropperTrackingId) == 0);
     }
 
     private void createEnemies() {
-        int numToAdd = numEnemies - world.trackableBlobListCount(enemyTrackingId);
+        int numToAdd = GameConfig.get().numEnemies() - world.trackableBlobListCount(enemyTrackingId);
 
         if (numToAdd <= 0) return;
 
@@ -238,6 +235,7 @@ public class FiringGameTest implements Game, KeyListener {
 
         if (createBonusDropper()) {
             EnemyIF bonusdropper = (EnemyIF) EnemyFactory.bonusDropper(world, renderer);
+            world.addBlobToTrackableBlobList(bonusDropperTrackingId, (BlobIF)bonusdropper); 
             numToAdd -= bonusdropper.getWeight();
             EnemyFactory.flashMessage(world, renderer, "Bonus Dropper!", 30);
             GameSound.get().playSoundId(SoundId.bonusDropperAppear);
@@ -305,14 +303,10 @@ public class FiringGameTest implements Game, KeyListener {
             score = 0;
             incShield.execute(GameConfig.get().initialShields());
             incHitPoints.execute(GameConfig.get().initialHitPoints());
+            scoreForNextBoss = GameConfig.get().bossScoreIncrement();
         }
 
-        //scoreDisplay.setLastScore(score);
-
         scoreDisplay.setScore(score);
-        // scoreDisplay.setHitPoints(((DamagableIF)defender).getHitPoints()); //
-        // TODO: test
-        doSettingsKnobs();
         createEnemies();
     }
 
