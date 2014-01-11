@@ -16,5 +16,6 @@
     <string name="settings_vibration">Enable Vibration</string>
     <string name="settings_sound">Enable Sound</string>
     <string name="resume_button">Resume</string>
+    <string name="clear_high_scores">Clear High Scores</string>
 
 </resources>

@@ -21,4 +21,18 @@
             android:text="@string/high_score_title" />
     </TableRow>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/clear_high_scores_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/clear_high_scores" />
+
+    </LinearLayout>
+
 </TableLayout>

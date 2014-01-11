@@ -11,9 +11,13 @@ import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HighScoreView extends Activity {
 
@@ -28,6 +32,9 @@ public class HighScoreView extends Activity {
         initFont();
         setFontOnText();
         populateViewWithScores();
+        
+        Button clear_hs_button = (Button) findViewById(R.id.clear_high_scores_button);
+        clear_hs_button.setOnClickListener(clearHighScoresButtonListener);
     }
 
     protected void initFont() {
@@ -79,10 +86,29 @@ public class HighScoreView extends Activity {
         }
     }
 
+    private OnClickListener clearHighScoresButtonListener = new OnClickListener() {
+        @Override public void onClick(View arg0) {
+ 
+            String[] keys = new String[] {
+                    "high_score_0",
+                    "high_score_1",
+                    "high_score_2"
+            };
+            
+            for (int ct = 0; ct < keys.length; ct++) {
+                LocalHighScore.get().clear(keys[ct]);
+            }
+            
+            Toast.makeText(getApplicationContext(), "High scores cleared.", Toast.LENGTH_SHORT).show();
+            HighScoreView.this.finish();
+        }
+    };
+
     protected void setFontOnText() {
         TextView[] textIds = new TextView[] {
             // TODO: put the "High Scores" title view id in here
                 (TextView) findViewById(R.id.high_score_title),
+                (Button) findViewById(R.id.clear_high_scores_button)
                 /*
                 (RadioButton) findViewById(R.id.difficulty_easy),
                 (RadioButton) findViewById(R.id.difficulty_normal),
