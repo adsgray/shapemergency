@@ -297,10 +297,10 @@ public class FiringGameTest implements Game, KeyListener {
             score = gs.score;
             incShield.execute(gs.shields);
             incHitPoints.execute(gs.hitPoints);
-            GameConfig.get().setBossesKilled(gs.bossesKilled);
             (new DifficultySetter()).execute(gs.difficulty);
+            GameConfig.get().setBossesKilled(gs.bossesKilled);
             defender.setPosition(new BlobPosition(gs.defenderPos));
-            scoreForNextBoss = bossScoreIncrement * (gs.bossesKilled + 1);
+            scoreForNextBoss = GameConfig.get().bossScoreIncrement() * (gs.bossesKilled + 1);
         } else {
             score = 0;
             incShield.execute(GameConfig.get().initialShields());
