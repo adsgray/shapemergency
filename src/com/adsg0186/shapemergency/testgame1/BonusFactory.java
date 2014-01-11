@@ -78,7 +78,7 @@ public class BonusFactory {
         GameCommand bonus = new GameCommand() {
             @Override public void execute(int num) {
                 incHitPoints.execute(num);
-                postBonusExecute(String.format("%d HitPoint Bonus!", num));
+                postBonusExecute(String.format("%d Health Bonus!", num));
             }
         };
         

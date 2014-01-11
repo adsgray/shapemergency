@@ -23,9 +23,9 @@ public class ScoreTextDisplay extends BaseTextBlob {
     
     private void updateTxt() {
         if (lastScore == 0) {
-            txt = String.format("Score: %5d   HitPoints: %2d   Shields: %2d", score, hitPoints, numShields);
+            txt = String.format("Score: %5d   Health: %2d   Shields: %2d", score, hitPoints, numShields);
         } else {
-            txt = String.format("Score: %5d   HitPoints: %2d   Shields: %2d   Last Game: %2d", score, hitPoints, numShields, lastScore);
+            txt = String.format("Score: %5d   Health: %2d   Shields: %2d   Last Game: %2d", score, hitPoints, numShields, lastScore);
         }
     }
 
