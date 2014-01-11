@@ -32,8 +32,8 @@
             <intent-filter>
             </intent-filter>
         </activity>
-        <activity android:label="@string/app_name" android:name="HighScoreView" android:screenOrientation="portrait"></activity>
-        <activity android:name="SettingsView" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
+        <activity android:label="@string/app_name" android:name="com.adsg0186.shapemergency.HighScoreView" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.adsg0186.shapemergency.SettingsView" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
 
     </application>
 
