@@ -24,4 +24,6 @@
     <string name="clear_hs_confirm_title">Clear High Scores</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+    <string name="help_title">Help</string>
+    <string name="help_text">Drag Triangle to move. Tap Triangle to shoot. Swipe down on Triangle to activate shield. Avoid bombs. Catch BONUSes.</string>
 </resources>

@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/vibratecheckbox"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
         android:text="@string/about_title" />
 

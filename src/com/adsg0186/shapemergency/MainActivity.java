@@ -57,8 +57,6 @@ public class MainActivity extends Activity {
  
     private OnClickListener highScoreButtonListener = new OnClickListener() {
         @Override public void onClick(View arg0) {
-            // initialize a new instance of your Game class
-            //initialize(new MainPanel(getApplicationContext()), false); 
             Log.d("trace", "high score button tapped");
             Intent myIntent = new Intent(MainActivity.this, HighScoreView.class);
             MainActivity.this.startActivity(myIntent);
@@ -67,14 +65,20 @@ public class MainActivity extends Activity {
   
     private OnClickListener settingsButtonListener = new OnClickListener() {
         @Override public void onClick(View arg0) {
-            // initialize a new instance of your Game class
-            //initialize(new MainPanel(getApplicationContext()), false); 
             Log.d("trace", "high score button tapped");
             Intent myIntent = new Intent(MainActivity.this, SettingsView.class);
             MainActivity.this.startActivity(myIntent);
         }
     };
-     
+   
+    private OnClickListener helpButtonListener = new OnClickListener() {
+        @Override public void onClick(View arg0) {
+            Log.d("trace", "help button tapped");
+            Intent myIntent = new Intent(MainActivity.this, HelpView.class);
+            MainActivity.this.startActivity(myIntent);
+        }
+    };
+    
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch(requestCode) {
             case START_GAME:
@@ -96,7 +100,8 @@ public class MainActivity extends Activity {
                 (RadioButton) findViewById(R.id.difficulty_hard),
                 (Button) findViewById(R.id.play_button),
                 (Button) findViewById(R.id.high_score_button),
-                (Button) findViewById(R.id.settings_button)
+                (Button) findViewById(R.id.settings_button),
+                (Button) findViewById(R.id.help_button)
         };
 
         unispace = Typeface.createFromAsset(getAssets(),"data/unispace.ttf");
@@ -129,6 +134,8 @@ public class MainActivity extends Activity {
         highScorebutton.setOnClickListener(highScoreButtonListener);
         Button settingsbutton = (Button)findViewById(R.id.settings_button);
         settingsbutton.setOnClickListener(settingsButtonListener);
+        Button helpButton = (Button)findViewById(R.id.help_button);
+        helpButton.setOnClickListener(helpButtonListener);
         
         if (SavedGame.get().getSavedGamePresent()) {
             createOptionalResumeButton();
