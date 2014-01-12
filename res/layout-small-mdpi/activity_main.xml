@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
     >
     <Button
         android:id="@+id/play_button"
@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
 
 
-        android:paddingBottom="13dp"
-        android:paddingLeft="13dp"
-        android:paddingRight="13dp"
-        android:paddingTop="13dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="2dp"
         />
         <!--   
 
@@ -55,12 +55,12 @@
 
             android:layout_below="@+id/game_buttons"
 
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
 
-        	android:paddingBottom="13dp"
-        	android:paddingLeft="13dp"
-        	android:paddingRight="13dp"
-        	android:paddingTop="13dp" 
+        	android:paddingBottom="2dp"
+        	android:paddingLeft="25dp"
+        	android:paddingRight="25dp"
+        	android:paddingTop="2dp" 
             />
         
         <!--   
@@ -80,10 +80,10 @@
         android:layout_below="@+id/high_score_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:paddingBottom="13dp"
-        android:paddingLeft="13dp"
-        android:paddingRight="13dp"
-        android:paddingTop="13dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="2dp"
         android:text="@string/settings_button" />
 
     <TextView
@@ -92,9 +92,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
         android:text="@string/instructions"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        />
 
     <LinearLayout
         android:id="@+id/difficulty_choices"
@@ -102,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/instructions"
-        android:layout_marginTop="10dp" 
+        android:layout_marginTop="2dp" 
         android:layout_marginLeft="50dp" 
         >
 
@@ -120,11 +121,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/settings_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="13dp"
-        android:paddingLeft="13dp"
-        android:paddingRight="13dp"
-        android:paddingTop="13dp"
-        android:text="@string/help_title" />
+        android:layout_marginTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="2dp"
+        android:text="@string/help_title" 
+        />
 
 </RelativeLayout>

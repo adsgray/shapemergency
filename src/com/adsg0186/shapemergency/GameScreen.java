@@ -89,49 +89,6 @@ public class GameScreen implements ApplicationListener {
 	    this.difficultyLevel = difficultyLevel;
 	}
 	
-	private void populateWorld() {
-	    //GameFactory.populateWorldWithBlobs(world, numBlobs, renderConfig);
-	    //GameFactory.populateWorldNonRandom(world, renderConfig);
-	    //GameFactory.populateWorldNonRandomBlobSet(world, renderConfig);
-	    //GameFactory.populateWorldLaunchUp(world, renderConfig);
-	    //GameFactory.populateWorldOoze(world, renderConfig);
-	    //GameFactory.populateWorldCollisionTest(world, renderConfig);
-	    //GameFactory.populateWorldTestTriggers(world, renderConfig);
-	    //GameFactory.populateWorldTestTriggersAgain(world, renderConfig);
-	    //GameFactory.populateWorldGameTestOne(world, renderConfig);
-	    //GameFactory.populateWorldTestOffsetPosition(world, renderConfig);
-	    //GameFactory.populateWorldTestBumpAccel(world, renderConfig);
-	    //GameFactory.populateWorldTestNewBlobSet(world, renderConfig);
-	    //GameFactory.populateWorldTestTriangle(world,  renderConfig);
-	    //GameFactory.populateWorldTestMultiplyPosition(world,  renderConfig);
-	    GameFactory.populateWorldTestText(world, renderConfig);
-	}
-
-	// make a DirectionListener that can affect the world
-	private class TestDirectionListener extends DefaultDirectionListener {
-	    protected WorldIF world;
-	    public TestDirectionListener(WorldIF world) {
-	        this.world = world;
-	    }
-	        
-	    @Override
-	    public void onUp(DirectionListener.FlingInfo f) {
-	        super.onUp(f);
-	        // velocities are "backwards"
-	        if (f.startY < 200 && f.velocityY < -800) {
-	            populateWorld();
-	        }
-	    }
-
-	    @Override
-	    public void onDown(DirectionListener.FlingInfo f) {
-	        Log.d("input", String.format("screen swiped DOWN start(%f,%f) vel(%f,%f)", f.startX, f.startY, f.velocityX, f.velocityY));
-	        if (f.startY > 1000) {
-	            world.killAllBlobs();
-	        }
-	    }
-	}	
-
 	// amazingly, yes, in resume() we need an entirely new
 	// Timer and Task. You can't just create a new timer and put
 	// the old task on it. That's an exception.
