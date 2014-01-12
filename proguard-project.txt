@@ -19,6 +19,13 @@
 #   public *;
 #}
 
+-libraryjars libs/gdx.jar
+-libraryjars libs/gdx-backend-android.jar
+-libraryjars libs/gdx-freetype.jar
+-libraryjars libs/blobengine.jar
+
+-dontwarn com.badlogic.gdx.jnigen.*
+
 -assumenosideeffects class android.util.Log {
     public static boolean isLoggable(java.lang.String, int);
     public static int v(...);
@@ -33,3 +40,6 @@
     #public static *** v(...);
     #public static *** i(...);
 #}
+#
+#
+
