@@ -24,7 +24,21 @@
 -libraryjars libs/gdx-freetype.jar
 -libraryjars libs/blobengine.jar
 
--dontwarn com.badlogic.gdx.jnigen.*
+# don't obfuscate 3rd party jars
+-keep class com.badlogic.gdx.** { *; }
+-dontwarn com.badlogic.gdx.*
+-dontwarn com.badlogic.gdx.jnigen.**
+-dontwarn com.badlogic.**
+-dontnote com.badlogic.**
+
+#-keepclasseswithmembers class * {
+  #void onClick*(...);
+#}
+
+#-keep class * com.badlogic.gdx.**
+#-keep class com.badlogic.gdx.backends.android.** { *; }
+-keep class com.badlogic.** { *; }
+-keep class com.badlogic.backends.** { *; }
 
 -assumenosideeffects class android.util.Log {
     public static boolean isLoggable(java.lang.String, int);
