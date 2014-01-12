@@ -30,11 +30,6 @@ import com.github.adsgray.gdxtry1.engine.util.PositionFactory;
 
 public class EnemyFactory {
     
-    // TODO: enemy BlobSources that the code
-    // will choose from randomly.
-    // At least 3 levels of "difficulty"
-    // need an enemy that actually aims at you
-    // and fires more/faster
     private static BlobPath randomPath() {
         if (TargetUtils.rnd.nextInt(100) < 50) {
             //return PathFactory.squarePath(15,5);

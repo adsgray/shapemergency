@@ -27,7 +27,6 @@ public class AngryTargetMissileSource extends BlobSource {
         this.transform = transform;
     }
     
-    // TODO: make these have hitpoints to inflict damage on defender
     @Override
     protected BlobIF generate(BlobIF parent) {
         WorldIF w = parent.getWorld();

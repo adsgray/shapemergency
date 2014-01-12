@@ -11,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import com.adsg0186.shapemergency.testgame1.GameSound.SoundId;
-import com.adsg0186.shapemergency.testgame1.TargetUtils.Difficulty;
 import com.adsg0186.shapemergency.testgame1.blobs.DamagableIF;
 import com.adsg0186.shapemergency.testgame1.blobs.DamagerIF;
 import com.adsg0186.shapemergency.testgame1.blobs.DefaultEnemy;
@@ -68,8 +67,6 @@ public class FiringGameTest implements Game, KeyListener {
     protected GameCommand incScore;
     protected GameCommand gameFinished;
 
-    // config parameters singleton class. easy, normal, insane.
-    // TODO: encapsulate this crap somewhere:
     protected int bossScoreIncrement = 1500; // you'll meet a boss every 1500
                                              // points
     protected int scoreForNextBoss = bossScoreIncrement;
@@ -168,8 +165,6 @@ public class FiringGameTest implements Game, KeyListener {
             if (hitPointsLeft <= 0) {
                 // Log.d("testgame1",
                 // String.format("Defender destroyed! Final score: %d", score));
-                // TODO: call a command supplied by outer creator of Game to
-                // save high score or something
                 gameFinished.execute(score);
             } else {
                 // Log.d("testgame1",
@@ -202,7 +197,6 @@ public class FiringGameTest implements Game, KeyListener {
         b = new FiringBlobDecorator(b, new EnemyCreator(), new IncShield());
         defender = (FiringBlobDecorator) b;
         b.registerCollisionTrigger(new DefenderCollisionTrigger(new DamageDefender()));
-        // TODO: need immortal blobs!
         b.setImmortal(true);
         world.addMissileToWorld(b);
         return b;

@@ -60,9 +60,6 @@ public class BonusFactory {
         GameSound.get().playSoundId(SoundId.bonusReceive);
     }
 
-    // TODO: put the number of shields/hitpoints/score that you get for
-    // a bonus in GameConfig. Different configs can return either a fixed
-    // number or a choice from a set of numbers (eg. points == 10,25,50)
     public BonusCommandIF shieldBonus(int num) {
         GameCommand bonus = new GameCommand() {
             @Override public void execute(int num) {

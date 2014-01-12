@@ -32,13 +32,6 @@ public class TargetUtils {
 
     public static Random rnd = new Random();
     public static BlobSource targetMissileSource = new TargetMissileSource();
-    
-    public enum Difficulty {
-        easy,
-        normal
-    }
-
-    public static Difficulty difficulty = Difficulty.normal;
 
     public static BlobTransform displaceBomb = new BlobTransform() {
         @Override public BlobIF transform(BlobIF b) {

@@ -3,7 +3,6 @@ package com.adsg0186.shapemergency.testgame1.blobs;
 import com.adsg0186.shapemergency.testgame1.GameSound;
 import com.adsg0186.shapemergency.testgame1.TargetUtils;
 import com.adsg0186.shapemergency.testgame1.GameSound.SoundId;
-import com.adsg0186.shapemergency.testgame1.TargetUtils.Difficulty;
 import com.adsg0186.shapemergency.testgame1.config.GameConfig;
 import com.github.adsgray.gdxtry1.engine.blob.BlobIF;
 import com.github.adsgray.gdxtry1.engine.blob.decorator.BlobDecorator;

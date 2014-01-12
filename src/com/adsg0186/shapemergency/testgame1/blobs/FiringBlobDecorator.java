@@ -54,9 +54,6 @@ public class FiringBlobDecorator extends BlobDecorator implements
         flingExtent = new CircleExtent(ce.getRadius() * 3);
         dragExtent = new CircleExtent(ce.getRadius() * 3);
         tapExtent = new CircleExtent(ce.getRadius() * 3);
-        // TODO: text display 'widget' in engine, display these hitpoints
-        // at the top of the screen.
-        // When you go <= 0 you explode and can start again.
         hitPoints = 0; // set by the FiringGame class in setupGame
         maxMissiles = 3; // the defender/triangle counts as a missile, so this means
                          // you can launch up to 2 simultaneous missiles
@@ -91,7 +88,6 @@ public class FiringBlobDecorator extends BlobDecorator implements
          if (world.getNumMissiles() < maxMissiles) {
             BlobIF missile = missileSource.get(this);
             GameSound.get().playSoundId(SoundId.shoot);
-            // TODO: make this disable-able in options:
             Vibrate.get().vibrate(25);
         }
         // else make the defender flash/shake?
